@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Weather App Project</title>
+    {% set image_url = url_for('static', filename='images/background.jpg') %}
+    <style>
+        body {
+            /* Sets the background image */
+           
+            background-image: url("{{ image_url }}");
+
+            
+            /* Ensures the image covers the whole page */
+            background-size: cover;
+
+            /* Image will not repeat */
+            background-repeat: no-repeat;
+
+            /* Image is fixed in the viewport */
+            background-attachment: fixed;
+
+            /* Centers the image in the page */
+            background-position: center center;
+
+            /* Ensures the text is readable */
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form method="post" action="/">
+        <label for="city">Enter City Name:</label>
+        <input type="text" id="city" name="city" required>
+        <button type="submit">Get Weather Data</button>
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <p>Temperature: {{ weather_data.temp }}</p>
+        <p>Description: {{ weather_data.description }}</p>
+    {% endif %}
+</body>
+
+</html>

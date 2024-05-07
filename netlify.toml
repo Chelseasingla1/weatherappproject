@@ -1,0 +1,4 @@
+[build]
+  command = "python flask_app.py"
+  publish = "build"
+
